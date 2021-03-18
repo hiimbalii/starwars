@@ -38,6 +38,7 @@ space.onkeypress(jobbra, "Right")
 space.onkeypress(fel, "Up")
 space.onkeypress(le, "Down")
 
+space.tracer(0)
 space.listen()
 
 ship = turtle.Turtle()
@@ -46,7 +47,6 @@ ship.shape("images/sprite.gif")
 meteor = turtle.Turtle()
 meteor.shape("images/meteor2.gif")
 meteor.penup()
-space.tracer(0)
 meteor.setx(400)
 space.tracer()
 
