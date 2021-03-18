@@ -20,12 +20,12 @@ def le():
 
 def kiX():
     newX = round(ship.xcor() / 400, 0) * -400
-    ship.setx(go)
+    ship.setx(newX)
 
 
 def kiY():
     newY = round(ship.ycor() / 300, 0) * -300
-    ship.sety(go)
+    ship.sety(newY)
 
 
 space = turtle.Screen()
