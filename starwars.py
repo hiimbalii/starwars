@@ -1,5 +1,6 @@
 import turtle
 from random import randint
+from time import sleep
 
 
 # funkciók majd ide
@@ -23,7 +24,7 @@ def move_meteor():
     if meteor.xcor() < -400:
         meteor.setx(400)
         meteor.sety(randint(-280, 280))
-    meteor.setx(meteor.xcor()-0.2)
+    meteor.setx(meteor.xcor()-10)
 
 
 space = turtle.Screen()
@@ -52,3 +53,4 @@ space.tracer()
 while True:
     move_meteor()
     space.update()
+    sleep(0.05)
