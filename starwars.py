@@ -48,7 +48,6 @@ meteor = turtle.Turtle()
 meteor.shape("images/meteor2.gif")
 meteor.penup()
 meteor.setx(400)
-space.tracer()
 
 while True:
     move_meteor()
