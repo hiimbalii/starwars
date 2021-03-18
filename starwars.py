@@ -1,5 +1,4 @@
 import turtle
-import math
 
 
 # funkciók majd ide
