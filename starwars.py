@@ -19,12 +19,12 @@ def le():
 
 
 def kiX():
-    go = round(ship.xcor() / 400, 0) * -400
+    newX = round(ship.xcor() / 400, 0) * -400
     ship.setx(go)
 
 
 def kiY():
-    go = round(ship.ycor() / 300, 0) * -300
+    newY = round(ship.ycor() / 300, 0) * -300
     ship.sety(go)
 
 
