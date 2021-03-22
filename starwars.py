@@ -25,6 +25,16 @@ def move_meteor():
         meteor.setx(400)
         meteor.sety(randint(-280, 280))
     meteor.setx(meteor.xcor()-10)
+    
+
+def kiX():
+    newX = round(ship.xcor() / 400, 0) * -400
+    ship.setx(newX)
+
+
+def kiY():
+    newY = round(ship.ycor() / 300, 0) * -300
+    ship.sety(newY)
 
 
 space = turtle.Screen()
@@ -43,6 +53,8 @@ space.listen()
 
 ship = turtle.Turtle()
 ship.shape("images/sprite.gif")
+ship.penup()
+
 
 meteor = turtle.Turtle()
 meteor.shape("images/meteor2.gif")
@@ -50,6 +62,10 @@ meteor.penup()
 meteor.setx(400)
 
 while True:
+    if abs(ship.xcor()) > 420:
+        kiX()
+    if abs(ship.ycor()) > 300:
+        kiY()
     move_meteor()
     space.update()
     sleep(0.05)
