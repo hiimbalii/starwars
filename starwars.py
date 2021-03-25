@@ -25,7 +25,7 @@ def move_meteor():
         meteor.setx(400)
         meteor.sety(randint(-280, 280))
     meteor.setx(meteor.xcor()-10)
-    
+
 
 def kiX():
     newX = round(ship.xcor() / 400, 0) * -400
@@ -54,7 +54,6 @@ space.listen()
 ship = turtle.Turtle()
 ship.shape("images/sprite.gif")
 ship.penup()
-
 
 meteor = turtle.Turtle()
 meteor.shape("images/meteor2.gif")
