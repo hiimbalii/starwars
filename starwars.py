@@ -1,8 +1,7 @@
 import turtle
 from random import randint
 from time import sleep
-
-
+import simpleaudio as sa
 # funkciók majd ide
 def balra():
     ship.setx(ship.xcor()-20)
@@ -42,6 +41,10 @@ space.setup(width=800, height=600)
 space.bgpic("images/space.png")
 space.addshape("images/sprite.gif")
 space.addshape("images/meteor2.gif")
+# audio importalasa
+# használat: explosion.play() ez async, ha sync kell akkor a .wait_done()-t mögé lehet írni, de nem fontos
+# ha a while trueba rakjátok be bugos
+explosion = sa.WaveObject.from_wave_file("sounds/explosion-01.wav")
 
 space.onkeypress(balra, "Left")
 space.onkeypress(jobbra, "Right")
