@@ -42,7 +42,6 @@ def roll_new_time():
     curr_time = datetime.now()
     seconds = randint(5, 30)
     roll_new_time.next_meteor_time = curr_time + timedelta(seconds=seconds)
-    print(seconds)
 
 
 def kiX():
