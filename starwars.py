@@ -1,6 +1,7 @@
 import turtle
 from random import randint
 from time import sleep
+from datetime import datetime, timedelta
 # import simpleaudio as sa
 # funkciók majd ide
 
@@ -21,11 +22,27 @@ def le():
     ship.sety(ship.ycor()-20)
 
 
-def move_meteor():
-    if meteor.xcor() < -400:
-        meteor.setx(400)
-        meteor.sety(randint(-280, 280))
-    meteor.setx(meteor.xcor()-10)
+def move_meteors():
+    for one_meteor in meteors:
+        if one_meteor.xcor() < -400:
+            one_meteor.setx(400)
+            one_meteor.sety(randint(-280, 280))
+        one_meteor.setx(one_meteor.xcor()-10)
+
+
+def add_meteor():
+    new_meteor = turtle.Turtle()
+    new_meteor.shape("images/meteor2.gif")
+    new_meteor.penup()
+    new_meteor.setx(400)
+    meteors.append(new_meteor)
+
+
+def roll_new_time():
+    curr_time = datetime.now()
+    seconds = randint(5, 30)
+    roll_new_time.next_meteor_time = curr_time + timedelta(seconds=seconds)
+    print(seconds)
 
 
 def kiX():
@@ -66,10 +83,8 @@ ship = turtle.Turtle()
 ship.shape("images/sprite.gif")
 ship.penup()
 
-meteor = turtle.Turtle()
-meteor.shape("images/meteor2.gif")
-meteor.penup()
-meteor.setx(400)
+meteors = []
+add_meteor()
 
 life = 3
 lives = turtle.Turtle()
@@ -79,16 +94,21 @@ lives.goto(-250, 240)
 lives.clear()
 eletek()
 
+roll_new_time()
 
 while True:
     if abs(ship.xcor()) > 420:
         kiX()
     if abs(ship.ycor()) > 300:
         kiY()
-    if(ship.distance(meteor.xcor(), meteor.ycor()) < 50):
-        meteor.goto(500, 150)
-        life -= 1
-        eletek()
-    move_meteor()
+    for meteor in meteors:
+        if(ship.distance(meteor.xcor(), meteor.ycor()) < 50):
+            meteor.goto(500, 150)
+            life -= 1
+            eletek()
+    move_meteors()
+    if datetime.now() >= roll_new_time.next_meteor_time:
+        add_meteor()
+        roll_new_time()
     space.update()
     sleep(0.05)
