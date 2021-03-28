@@ -102,7 +102,7 @@ while True:
         kiY()
     for meteor in meteors:
         if(ship.distance(meteor.xcor(), meteor.ycor()) < 50):
-            meteor.goto(500, 150)
+            meteor.goto(-500, 0)
             life -= 1
             eletek()
     move_meteors()
