@@ -2,7 +2,8 @@ import turtle
 from random import randint
 from time import sleep
 from datetime import datetime, timedelta
-# import simpleaudio as sa
+import simpleaudio as sa
+
 # funkciók majd ide
 
 
@@ -69,7 +70,7 @@ space.addshape("images/rocket.gif")
 # audio importalasa
 # használat: explosion.play() ez async, ha sync kell akkor a .wait_done()-t mögé lehet írni, de nem fontos
 # ha a while trueba rakjátok be bugos
-# explosion = sa.WaveObject.from_wave_file("sounds/explosion-01.wav")
+explosion = sa.WaveObject.from_wave_file("sounds/explosion-01.wav")
 
 space.onkeypress(balra, "Left")
 space.onkeypress(jobbra, "Right")
@@ -104,6 +105,7 @@ while True:
         if(ship.distance(meteor.xcor(), meteor.ycor()) < 50):
             meteor.goto(-500, 0)
             life -= 1
+            explosion.play()
             eletek()
     move_meteors()
     if datetime.now() >= roll_new_time.next_meteor_time:
