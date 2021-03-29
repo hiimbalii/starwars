@@ -1,7 +1,7 @@
 import turtle
 from random import randint
 from time import sleep
-# import simpleaudio as sa
+import simpleaudio as sa
 # funkciók majd ide
 
 
@@ -42,6 +42,7 @@ def eletek():
     lives.clear()
     hearts = "❤"*life
     lives.write(f"{hearts}", font=("Arial", 35, "bold"), align="center")
+    explosion.play()
 
 
 space = turtle.Screen()
@@ -53,7 +54,7 @@ space.addshape("images/rocket.gif")
 # audio importalasa
 # használat: explosion.play() ez async, ha sync kell akkor a .wait_done()-t mögé lehet írni, de nem fontos
 # ha a while trueba rakjátok be bugos
-# explosion = sa.WaveObject.from_wave_file("sounds/explosion-01.wav")
+explosion = sa.WaveObject.from_wave_file("sounds/explosion-01.wav")
 
 space.onkeypress(balra, "Left")
 space.onkeypress(jobbra, "Right")
