@@ -58,7 +58,7 @@ def kiY():
 def eletek():
     lives.clear()
     hearts = "❤"*life
-    lives.write(f"{hearts}", font=("Arial", 35, "bold"), align="center")
+    lives.write(f"{(hearts if life > 0 else 'Felrobbantál')}", font=("Arial", 35, "bold"), align="center")
 
 
 space = turtle.Screen()
@@ -101,15 +101,17 @@ while True:
         kiX()
     if abs(ship.ycor()) > 300:
         kiY()
+    move_meteors()
     for meteor in meteors:
-        if(ship.distance(meteor.xcor(), meteor.ycor()) < 50):
+        if ship.distance(meteor.xcor(), meteor.ycor()) < 50:
             meteor.goto(-500, 0)
             life -= 1
             explosion.play()
             eletek()
-    move_meteors()
     if datetime.now() >= roll_new_time.next_meteor_time:
         add_meteor()
         roll_new_time()
     space.update()
     sleep(0.05)
+    if life <= 0:
+        turtle.done()
