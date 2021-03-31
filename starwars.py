@@ -58,7 +58,7 @@ def kiY():
 def eletek():
     lives.clear()
     hearts = "❤"*life
-    lives.write(f"{(hearts if life > 0 else 'Felrobbantál')}", font=("Arial", 35, "bold"), align="center")
+    lives.write(f"{(hearts if life > 0 else 'Felrobbantál')}", font=("Calibri", 35, "bold"), align="center")
 
 
 space = turtle.Screen()
